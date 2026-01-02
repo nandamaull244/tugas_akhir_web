@@ -1,52 +1,18 @@
+<?php
+$page = 'product';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="style/style.css">
-    <title>Gridova ID</title>
+    <title>Gridova</title>
+    <?php include 'partials/head.php'; ?>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/logo.png" alt="Gridova Logo" width="145" height="40"
-                    class="d-inline-block align-text-top">
-            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"
-                    style='background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3E%3Cpath stroke=%27black%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E");'>
-                </span>
-            </button>
+<?php include 'partials/navbar.php'; ?>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav gap-2">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="katalog.html">Product</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="testimony.html">Testimony</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- ISI HALAMAN -->
     <!--detail produk-->
     <div class="container mt-4">
         <nav aria-label="breadcrumb">
@@ -158,7 +124,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/ip16pr.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/ip16pr.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -188,7 +154,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/ip17pr.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/ip17pr.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -218,7 +184,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/15t.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/15t.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -248,7 +214,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/x300.jpg" class="img-fluid product-image">
+                                        <img src="../../assets/x300.jpg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -278,7 +244,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/oppox9pro.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/oppox9pro.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -308,7 +274,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/oppox8pro.png" class="img-fluid product-image" width="93%">
+                                        <img src="../../assets/oppox8pro.png" class="img-fluid product-image" width="93%">
                                     </div>
                                 </div>
 
@@ -338,7 +304,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/note13pro.webp" class="img-fluid product-image">
+                                        <img src="../../assets/note13pro.webp" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -368,7 +334,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/s24u.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/s24u.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -398,7 +364,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/zflip7.png" class="img-fluid product-image">
+                                        <img src="../../assets/zflip7.png" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -428,7 +394,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/s25.png" class="img-fluid product-image">
+                                        <img src="../../assets/s25.png" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -458,7 +424,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/pur.webp" class="img-fluid product-image">
+                                        <img src="../../assets/pur.webp" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -488,7 +454,7 @@
                                     <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
                                     <div class="img-zoom-container">
-                                        <img src="assets/f7.jpeg" class="img-fluid product-image">
+                                        <img src="../../assets/f7.jpeg" class="img-fluid product-image">
                                     </div>
                                 </div>
 
@@ -513,84 +479,7 @@
         </div>
     </div>
 
-
-    <!-- FOOTER SECTION -->
-    <footer class="footer-premium mt-5 pt-5 pb-4">
-        <div class="container">
-
-            <div class="row gy-4">
-
-                <!-- ABOUT -->
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="fw-bold text-white mb-3">Gridova ID</h4>
-                    <p class="footer-desc">
-                        Toko elektronik terpercaya untuk Smartphone, Laptop, dan aksesoris.
-                        Pelayanan profesional, cepat, dan responsif.
-                    </p>
-
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="footer-social"><i class="bi bi-youtube"></i></a>
-                        <a href="#" class="footer-social"><i class="bi bi-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- SERVICE -->
-                <div class="col-lg-2 col-md-6">
-                    <h6 class="footer-title">Layanan</h6>
-                    <ul class="footer-links">
-                        <li><a href="#">Cara Belanja</a></li>
-                        <li><a href="#">Kebijakan Garansi</a></li>
-                        <li><a href="#">Pengembalian Barang</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                    </ul>
-                </div>
-
-                <!-- BRANDS -->
-                <div class="col-lg-3 col-md-6">
-                    <h6 class="footer-title">Brand Populer</h6>
-                    <ul class="footer-links">
-                        <li><a href="#">Samsung</a></li>
-                        <li><a href="#">Xiaomi</a></li>
-                        <li><a href="#">Vivo</a></li>
-                        <li><a href="#">Apple</a></li>
-                    </ul>
-                </div>
-
-                <!-- CONTACT -->
-                <div class="col-lg-3 col-md-6">
-                    <h6 class="footer-title">Kontak Kami</h6>
-                    <p class="footer-contact"><i class="bi bi-geo-alt-fill me-2"></i>Cianjur, Indonesia</p>
-                    <p class="footer-contact"><i class="bi bi-telephone-fill me-2"></i>0812-3456-7890</p>
-                    <p class="footer-contact"><i class="bi bi-envelope-fill me-2"></i>support@gridovaid.com</p>
-                </div>
-
-            </div>
-
-            <hr class="footer-divider mt-4 mb-3">
-
-            <div class="text-center small footer-copy">
-                © 2025 Gridova ID. All rights reserved.
-            </div>
-
-        </div>
-    </footer>
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+<?php include 'partials/footer.php'; ?>
 
 </body>
-
 </html>
