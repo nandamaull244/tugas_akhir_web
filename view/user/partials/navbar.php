@@ -53,18 +53,12 @@ session_start();
                     <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button"
                         data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle fs-5"></i>
-                        <?= htmlspecialchars($_SESSION['user']['name']) ?>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="profile.php">
-                                <i class="bi bi-person me-2"></i> Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="orders.php">
-                                <i class="bi bi-bag me-2"></i> Orders
+                                <i class="bi bi-person me-2"></i> <?= htmlspecialchars($_SESSION['user']['nama']) ?>
                             </a>
                         </li>
                         <li>

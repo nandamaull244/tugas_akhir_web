@@ -221,7 +221,12 @@
 </head>
 
 <body>
-
+<?php
+if (isset($_SESSION['error'])) {
+    echo '<script>alert("' . $_SESSION['error'] . '");</script>';
+    unset($_SESSION['error']);
+}
+?>
     <div class="bg-left"></div>
     <div class="bg-right"></div>
 
