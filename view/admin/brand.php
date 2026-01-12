@@ -5,12 +5,12 @@ if($_SESSION['admin_logged_in'] !== true){
     message('error', 'Please log in as admin to access the admin dashboard.');
     exit;
 }
-$title = 'Dashboard';
-$page = 'dashboard';
+$title = 'Brand';
+$page = 'brand';
 
 $admin_name = 'Admin';
 $admin_photo = '../../assets/logo.png';
 
-$content = __DIR__ . '/pages/dashboard-content.php';
+$content = __DIR__ . '/pages/brand-content.php';
 
 include 'layout/master.php';

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4>Product Management</h4>
-        <button class="btn btn-success">Add New Product</button>
+        <h4>Brand Management</h4>
+        <button class="btn btn-success">Add New Brand</button>
     </div>
 </div>
 <table class="table table-bordered table-striped">
@@ -9,13 +9,6 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Harga</th>
-            <th>tersedia</th>
-            <th>Stok</th>
-            <th>deskripsi</th>
-            <th>kategori</th>
-            <th>brand</th>
-            <th>gambar</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,13 +17,6 @@
         <tr>
             <td>1</td>
             <td>Samsung</td>
-            <td>1000000</td>
-            <td>Ya</td>
-            <td>10</td>
-            <td>Smartphone Samsung Galaxy S21</td>
-            <td>Electronics</td>
-            <td>Samsung</td>
-            <td><img src="../../assets/15t.jpeg" alt="Product Image" width="50"></td>
             <td>
                 <button class="btn btn-sm btn-primary">Edit</button>
                 <button class="btn btn-sm btn-danger">Delete</button>
