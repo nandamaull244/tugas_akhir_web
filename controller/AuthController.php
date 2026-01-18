@@ -12,7 +12,7 @@ $userModel = new User($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $action = $_POST['action'] ?? '';
-
+ 
     /* ================= REGISTER ================= */
     if ($action === 'register') {
 

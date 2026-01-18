@@ -26,6 +26,7 @@ if (!isset($content)) {
     <?php include $content; ?>
 
     <?php include 'partials/footer.php'; ?>
+    
 
 </body>
 
