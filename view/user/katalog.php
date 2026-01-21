@@ -1,5 +1,5 @@
 <?php
-$title = 'Grifdova - Katalog';
+$title = 'Gridova - Katalog';
 $page = 'product';
 $user_name = $_SESSION['user']['nama'];
 
