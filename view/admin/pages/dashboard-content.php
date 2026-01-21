@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once '../../database/connection.php';
 require_once '../../model/Brand.php';
 require_once '../../model/User.php';
+require_once '../../model/Product.php';
 $userModel = new User($pdo);
 $users = $userModel->getAllUsers();
 $userCount = count($users);
@@ -14,6 +15,10 @@ $userCount = count($users);
 $brandModel = new Brand($pdo);
 $brands = $brandModel->getAllBrands();
 $brandCount = count($brands);
+
+$productModel = new Product($pdo);
+$products = $productModel->getAll();
+$productCount = count($products);
 ?>
 <h4 class="mb-3">Dashboard</h4>
 
@@ -22,7 +27,7 @@ $brandCount = count($brands);
         <div class="card shadow-sm">
             <div class="card-body">
                 <h6>Total Produk</h6>
-                <h3>128</h3>
+                <h3><?php echo $productCount; ?></h3>
             </div>
         </div>
     </div>

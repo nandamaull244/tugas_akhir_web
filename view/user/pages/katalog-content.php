@@ -95,371 +95,79 @@
                 </div>
             </div>
             <!-- PRODUK -->
+<?php
+        require_once '../../database/connection.php';
+        require_once '../../model/Product.php';
 
+    $productModel = new Product($pdo);
+    $products = $productModel->getAll();
+    ?>      
             <!-- PRODUCT CARD -->
             <div class="col-12 col-lg-9">
                 <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/iphone_16p.html" class="text-decoration-none">
-                            <div class="product-card">
+        <?php
+                            function rupiah($angka) {
+                                return 'Rp ' . number_format($angka, 0, ',', '.');
+                            }
+                            ?>
+        <?php foreach ($products as $p): ?>
 
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
 
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/ip16pr.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <a href="detail.php?id=<?= $p['id'] ?>" class="text-decoration-none">
+                <div class="product-card">
 
-                                <div class="p-3">
-                                    <h6 class="product-title">IPHONE 16 PRO MAX TITANIUM GOLD 512GB</h6>
-                                    <p class="product-price">Rp 24.999.000</p>
+                    <!-- IMAGE -->
+                    <div class="image-box">
+                        <?php if ($p['stok_produk'] > 0): ?>
+                        <span class="badge-available">TERSEDIA</span>
+                        <?php else: ?>
+                        <span class="badge-sold">HABIS</span>
+                        <?php endif; ?>
 
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
+                        <span class="fav-btn"><i class="bi bi-heart"></i></span>
+
+                        <div class="img-zoom-container">
+                            <img src="<?= $p['gambar'] ?>" class="img-fluid product-image">
+                        </div>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/p17p.html" class="text-decoration-none">
-                            <div class="product-card">
 
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
+                    <div class="p-3">
+                        <h6 class="product-title">
+                            <?= htmlspecialchars($p['nama_produk']) ?>
+                        </h6>
 
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/ip17pr.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
 
-                                <div class="p-3">
-                                    <h6 class="product-title">IPHONE 17 PRO MAX COSMIC ORANGE 1TB</h6>
-                                    <p class="product-price">Rp 30.999.000</p>
+                        <p class="product-price">
+                            <?= rupiah($p['harga']) ?>
+                        </p>
 
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
+                        <?php if ($p['stok_produk'] > 0): ?>
+                        <form action="/tugas_akhir/controller/CartController.php" method="POST">
+                            <input type="hidden" name="id_produk" value="<?= $p['id'] ?>">
+                            <input type="hidden" name="qty" value="1">
+
+                            <button class="btn btn-primary w-100 add-cart-btn">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+
+                        <?php else: ?>
+                        <button class="btn btn-danger w-100" disabled>
+                            ✖ Sold Out
+                        </button>
+                        <?php endif; ?>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/15t.html" class="text-decoration-none">
-                            <div class="product-card">
 
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-sold">HABIS</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
+                </div>
 
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/15t.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
+            </a>
+        </div>
+        <?php endforeach; ?>
 
-                                <div class="p-3">
-                                    <h6 class="product-title">XIAOMI 15T GRAY 512GB OFFICIAL XIAOMI INDONESIA</h6>
-                                    <p class="product-price">Rp 8.999.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-danger w-100 add-cart-btn">
-                                        ✖ Sold Out
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/x300.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/x300.jpg" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">VIVO X300 IRIS PURPLE 512GB</h6>
-                                    <p class="product-price">Rp 14.999.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/x9pro.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/oppox9pro.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">OPPO FIND X9 PRO TITANIUM CHARCOAL 1TB</h6>
-                                    <p class="product-price">Rp 19.999.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/x8pro.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/oppox8pro.png" class="img-fluid product-image" width="93%">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">OPPO FIND X8 PRO PEARL WHITE 1TB</h6>
-                                    <p class="product-price">Rp 17.999.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/renot.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-sold">HABIS</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/note13pro.webp" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">REDMI NOTE 13 PRO PLUS 5G 256GB</h6>
-                                    <p class="product-price">Rp 3.999.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-danger w-100 add-cart-btn">
-                                        ✖ Habis
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/s24u.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/s24u.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">SAMSUNG S24 ULTRA TITANIUM BLACK 512GB</h6>
-                                    <p class="product-price">Rp 15.499.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/zflip7.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/zflip7.png" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">SAMSUNG Z FLIP 7 BLUE SHADOW 512GB</h6>
-                                    <p class="product-price">Rp 16.499.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/s25.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/s25.png" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">SAMSUNG GALAXY S25/S25+ SERIES NAVY 512GB-1TB</h6>
-                                    <p class="product-price">Rp 12.499.000 - 16.499.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/pura.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/pur.webp" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">HUAWEI PURA 80 ULTRA PRESTIGE GOLD 1TB</h6>
-                                    <p class="product-price">Rp 30.499.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <a href="product/f7.html" class="text-decoration-none">
-                            <div class="product-card">
-
-                                <!-- IMAGE BOX -->
-                                <div class="image-box">
-                                    <span class="badge-available">TERSEDIA</span>
-                                    <span class="fav-btn"><i class="bi bi-heart"></i></span>
-
-                                    <div class="img-zoom-container">
-                                        <img src="/tugas_akhir/assets/f7.jpeg" class="img-fluid product-image">
-                                    </div>
-                                </div>
-
-                                <div class="p-3">
-                                    <h6 class="product-title">POCO F7 5G BLACK 512GB OFFICIAL </h6>
-                                    <p class="product-price">Rp 6.527.000</p>
-
-                                    <!-- ADD TO CART BUTTON -->
-                                    <button class="btn btn-primary w-100 add-cart-btn">
-                                        <i class="bi bi-cart-plus"></i> Add to Cart
-                                    </button>
-                                </div>
-                                <!-- 
-                    <button class="btn btn-danger w-100 btn-sold">
-                        ✖ Habis
-                    </button> -->
-                            </div>
-                        </a>
-                    </div>
+        
                 </div>
             </div>
         </div>
     </div>
+</div>
