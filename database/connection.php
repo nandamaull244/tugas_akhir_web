@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "toko_elektronik";
+$dbname = "toko_eletktronik";
 
 try{
     $pdo = new PDO(

@@ -1,5 +1,17 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+$cartCount = 0;
+if (isset($_SESSION['user'])) {
+    require_once '../../database/connection.php';
+    require_once '../../model/Cart.php';
+
+    $cartModel = new Cart($pdo);
+    $cartItems = $cartModel->getCartByUserId($_SESSION['user']['id']);
+    $cartCount = count($cartItems);
+}
 ?>
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container">
@@ -40,7 +52,8 @@ session_start();
 
                                     <span class="position-absolute top-0 start-100 translate-middle
                                         badge rounded-pill bg-danger">
-                                        3
+                                        <?= $cartCount ?>
+                                        <span class="visually-hidden">unread messages</span>
                                     </span>
 
                             </a>

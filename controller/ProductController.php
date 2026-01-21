@@ -1,65 +1,69 @@
 <?php
 session_start();
-require_once __DIR__ . '/../database/connection.php';
-require_once __DIR__ . '/../model/Product.php';
+require_once __DIR__.'/../database/connection.php';
+require_once __DIR__.'/../model/Product.php';
 
 $product = new Product($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
 
-    /* UPLOAD IMAGE */
-    $imagePath = null;
+    $image = $_POST['old_image'] ?? null;
+
     if (!empty($_FILES['gambar']['name'])) {
-        $dir = '../assets/products/';
-        if (!is_dir($dir)) mkdir($dir, 0777, true);
 
-        $filename = time() . '_' . $_FILES['gambar']['name'];
-        move_uploaded_file($_FILES['gambar']['tmp_name'], $dir . $filename);
-        $imagePath = 'assets/products/' . $filename;
+        // PATH FISIK ke folder yang SUDAH ADA
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/tugas_akhir/gambar/';
+
+        // pastikan folder bisa ditulis
+        if (!is_writable($uploadDir)) {
+            die('Folder gambar tidak bisa ditulis');
+        }
+
+        $filename = time() . '_' . basename($_FILES['gambar']['name']);
+        $target   = $uploadDir . $filename;
+
+        if (move_uploaded_file($_FILES['gambar']['tmp_name'], $target)) {
+            // PATH RELATIF untuk database
+            $image = '/tugas_akhir/gambar/' . $filename;
+        } else {
+            die('Upload gambar gagal');
+        }
     }
 
-    /* CREATE */
-    if ($action === 'create') {
+
+    if ($_POST['action'] === 'create') {
         $product->create([
-            'nama_produk'  => $_POST['nama_produk'],
-            'harga'        => $_POST['harga'],
-            'stok_produk'  => $_POST['stok_produk'],
-            'is_available' => $_POST['stok_produk'] > 0 ? 1 : 0,
-            'deskripsi'    => $_POST['deskripsi'],
-            'id_kategori'  => $_POST['id_kategori'],
-            'id_brand'     => $_POST['id_brand'],
-            'id_gambar'    => $imagePath
+            'nama_produk'=>$_POST['nama_produk'],
+            'harga'=>$_POST['harga'],
+            'stok_produk'=>$_POST['stok_produk'],
+            'is_available'=>$_POST['stok_produk']>0,
+            'deskripsi'=>$_POST['deskripsi'],
+            'id_kategori'=>$_POST['id_kategori'],
+            'id_brand'=>$_POST['id_brand'],
+            'gambar'=>$image
         ]);
-
-        $_SESSION['success'] = 'Produk berhasil ditambahkan';
-        header('Location: ../view/admin/products.php');
-        exit;
+        $_SESSION['success']='Produk ditambahkan';
     }
 
-    /* UPDATE */
-    if ($action === 'update') {
+    if ($_POST['action'] === 'update') {
         $product->update($_POST['id'], [
-            'nama_produk'  => $_POST['nama_produk'],
-            'harga'        => $_POST['harga'],
-            'stok_produk'  => $_POST['stok_produk'],
-            'is_available' => $_POST['stok_produk'] > 0 ? 1 : 0,
-            'deskripsi'    => $_POST['deskripsi'],
-            'id_kategori'  => $_POST['id_kategori'],
-            'id_brand'     => $_POST['id_brand'],
-            'id_gambar'    => $imagePath ?? $_POST['old_image']
+            'nama_produk'=>$_POST['nama_produk'],
+            'harga'=>$_POST['harga'],
+            'stok_produk'=>$_POST['stok_produk'],
+            'is_available'=>$_POST['stok_produk']>0,
+            'deskripsi'=>$_POST['deskripsi'],
+            'id_kategori'=>$_POST['id_kategori'],
+            'id_brand'=>$_POST['id_brand'],
+            'gambar'=>$image
         ]);
-
-        $_SESSION['success'] = 'Produk berhasil diupdate';
-        header('Location: ../view/admin/products.php');
-        exit;
+        $_SESSION['success']='Produk diupdate';
     }
 
-    /* DELETE */
-    if ($action === 'delete') {
+    if ($_POST['action'] === 'delete') {
         $product->delete($_POST['id']);
-        $_SESSION['success'] = 'Produk berhasil dihapus';
-        header('Location: ../view/admin/products.php');
-        exit;
+        $_SESSION['success']='Produk dihapus';
     }
+
+    header('Location: ../view/admin/products.php');
+    exit;
 }
