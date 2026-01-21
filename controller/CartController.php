@@ -50,6 +50,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $_SESSION['success'] = 'Produk ditambahkan ke cart';
-    header('Location: ../cart.php');
+    header('Location:  /tugas_akhir/view/user/cart.php');
+    exit;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // UPDATE QTY
+    if (isset($_POST['update_qty'])) {
+        $id  = $_POST['cart_id'];
+        $qty = max(1, intval($_POST['qty']));
+        $cart->updateQty($id, $qty);
+    }
+
+    // DELETE
+    if (isset($_POST['delete'])) {
+        $cart->delete($_POST['cart_id']);
+    }
+
+    header('Location: /tugas_akhir/view/user/cart.php');
     exit;
 }

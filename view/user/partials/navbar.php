@@ -47,8 +47,14 @@ if (isset($_SESSION['user'])) {
                 <!-- CART ICON -->
                 <?php if (isset($_SESSION['user'])): ?>
                         <li class="nav-item position-relative">
-                            <a href="cart.php" class="nav-link">
-                                <i class="bi bi-cart fs-5"></i>
+                            <a href="/tugas_akhir/view/user/cart.php" class="nav-link">
+                                <?php
+                                if ($page == 'cart' && $cartCount > 0) {
+                                    echo '<i class="bi bi-cart-fill fs-5"></i>';
+                                } else {
+                                    echo '<i class="bi bi-cart fs-5"></i>';
+                                }
+                                ?>
 
                                     <span class="position-absolute top-0 start-100 translate-middle
                                         badge rounded-pill bg-danger">

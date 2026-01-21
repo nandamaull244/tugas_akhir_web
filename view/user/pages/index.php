@@ -150,12 +150,16 @@ error_reporting(E_ALL);
     <h4 class="title pb-2">Promo minggu ini</h4>
 
     <div class="row g-4">
-
+        <?php
+                            function rupiah($angka) {
+                                return 'Rp ' . number_format($angka, 0, ',', '.');
+                            }
+                            ?>
         <?php foreach ($products as $p): ?>
-        <a href="detail.php?id=<?= $p['id'] ?>" class="text-decoration-none">
 
-            <div class="col-12 col-sm-6 col-lg-3">
 
+        <div class="col-12 col-sm-6 col-lg-3">
+            <a href="detail.php?id=<?= $p['id'] ?>" class="text-decoration-none">
                 <div class="product-card">
 
                     <!-- IMAGE -->
@@ -177,11 +181,7 @@ error_reporting(E_ALL);
                         <h6 class="product-title">
                             <?= htmlspecialchars($p['nama_produk']) ?>
                         </h6>
-                        <?php
-                            function rupiah($angka) {
-                                return 'Rp ' . number_format($angka, 0, ',', '.');
-                            }
-                            ?>
+
 
                         <p class="product-price">
                             <?= rupiah($p['harga']) ?>
@@ -206,8 +206,8 @@ error_reporting(E_ALL);
 
                 </div>
 
-            </div>
-        </a>
+            </a>
+        </div>
         <?php endforeach; ?>
 
     </div>

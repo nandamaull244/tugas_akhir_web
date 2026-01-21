@@ -29,13 +29,7 @@ class Cart {
         ]);
     }
 
-    // update qty jika produk sudah ada
-    public function updateQty($id, $qty) {
-        $stmt = $this->db->prepare(
-            "UPDATE cart SET qty = ? WHERE id = ?"
-        );
-        return $stmt->execute([$qty, $id]);
-    }
+
     public function getCartByUserId($id_user) {
         $stmt = $this->db->prepare(
             "SELECT c.*, p.nama_produk, p.gambar
@@ -45,6 +39,46 @@ class Cart {
         );
         $stmt->execute([$id_user]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+        // ambil cart user
+    public function getByUser($id_user) {
+        $stmt = $this->db->prepare("
+            SELECT 
+                cart.id,
+                cart.qty,
+                cart.harga,
+                cart.subtotal,
+                produk.nama_produk,
+                produk.gambar
+            FROM cart
+            JOIN produk ON cart.id_produk = produk.id
+            WHERE cart.id_user = ?
+        ");
+        $stmt->execute([$id_user]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // update qty
+    public function updateQty($id, $qty) {
+        $stmt = $this->db->prepare(
+            "UPDATE cart SET qty = ? WHERE id = ?"
+        );
+        return $stmt->execute([$qty, $id]);
+    }
+
+    // hapus item
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM cart WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
+
+    // total belanja
+    public function getTotal($id_user) {
+        $stmt = $this->db->prepare(
+            "SELECT SUM(subtotal) as total FROM cart WHERE id_user = ?"
+        );
+        $stmt->execute([$id_user]);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
     }
 
 }

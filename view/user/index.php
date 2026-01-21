@@ -1,5 +1,5 @@
 <?php
-$title = 'Grifdova - Home';
+$title = 'Gridova - Home';
 $page = 'home';
 $user_name = $_SESSION['user']['nama'];
 
